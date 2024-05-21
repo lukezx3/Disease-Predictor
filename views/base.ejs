@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SICKSENSE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="frame">
+      <div class="div">
+        <div class="ss-text-wrapper">🩺 SickSense</div>
+        <div class="ss-overlap" style="top: 204px">
+          <p class="ss-we-are-your-sixth" style="margin-bottom: 0px">
+            <span class="ss-span">We are your</span>
+            <span class="ss-text-wrapper-2">&nbsp;</span>
+            <span class="ss-text-wrapper-3">sixth sense.</span>
+          </p>
+          <p class="ss-don-t-waste-time" style="margin-top: 0px; top: 140px">
+            <span class="ss-text-wrapper-5"
+              >Don’t waste time finding solutions online. SickSense diagnoses your illnesses from just your symptoms in
+            </span>
+            <span class="ss-text-wrapper-6">seconds.</span>
+          </p>
+        </div>
+        <img class="image" src="images/amico.svg" />
+        <form action="/create" method="GET">
+          <button type="submit" class="overlap-group">
+            <span class="text-wrapper-8">Sign Up</span>
+	  </button>
+        </form>
+        <button type="button" class="div-wrapper" data-toggle="modal" data-target="#loginModal">
+          <span class="text-wrapper-9">Log In</span>
+        </button>
+      </div>
+    </div>
+
+    
+
+<!-- Modal for Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="loginUserID">User ID</label>
+                <input type="text" class="form-control" id="loginUserID" placeholder="Enter User ID">
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  $(document).ready(function() {
+    $('#loginBtn').click(function() {
+      var userID = $('#loginUserID').val();
+      var password = $('#loginPassword').val();
+      $.ajax({
+        url: '/login',
+        method: 'POST',
+        data: { userID: userID, password: password },
+        success: function(response) {
+          $('#loginModal').modal('hide');
+          window.location.href = '/main';
+          // Handle success response
+        },
+        error: function(xhr, status, error) {
+          alert(xhr.responseText);
+        }
+      });
+    });
+
+  });
+</script>
+
+</body>
+<footer>
+    <div class="footer">© 2024 SickSense. All rights reserved.</div>
+  </footer>
+</html>
+
