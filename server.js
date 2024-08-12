@@ -4,10 +4,10 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql2');
 var path = require('path');
 var connection = mysql.createConnection({
-                host: '34.41.68.202',
-                user: 'root',
-                password: 'team46-$',
-                database: 'team46db'
+                host: '---',
+                user: '---',
+                password: '----',
+                database: '-----'
 });
 connection.connect;
 
